@@ -1,0 +1,9 @@
+/Config/*
+/Config/config.php
+/authentication/*
+/Library/Connection.php
+/files/*
+*.cache
+*.sublime-project
+*.sublime-workspace
+composer.json
