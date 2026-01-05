@@ -135,7 +135,7 @@
                                             id="documento"
                                             name="documento"
                                             class="form-control form-control-lg text-center"
-                                            placeholder="Número de documento"
+                                            placeholder="Documento"
                                             onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                                             onpaste="validatePaste(event)"
                                             autocomplete="off" required>
@@ -148,7 +148,7 @@
                                             id="token"
                                             name="token"
                                             class="form-control form-control-lg text-center"
-                                            placeholder="Número de token"
+                                            placeholder="Token de acceso"
                                             autocomplete="off" required>
                                         <div class="invalid-feedback">Campo obligatorio.</div>
                                     </div>

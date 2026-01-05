@@ -16,7 +16,7 @@
         object-fit: contain;
     }
 
-    .contenidoBasico {
+    .sectionInfo {
         background-color: #ffffff;
         padding: 30px;
         border-radius: 12px;
@@ -118,7 +118,7 @@
        ============================================ */
     
     /* Ajustes generales para todos los dispositivos */
-    .contenidoBasico {
+    .sectionInfo {
         padding: 20px;
     }
     
@@ -155,7 +155,7 @@
     
     /* MOBILE - Menos de 576px */
     @media (max-width: 575.98px) {
-        .contenidoBasico,
+        .sectionInfo,
         #forms-container {
             padding: 15px;
             margin: 10px auto;
@@ -262,7 +262,7 @@
     
     /* TABLET - 576px a 991px */
     @media (min-width: 576px) and (max-width: 991.98px) {
-        .contenidoBasico,
+        .sectionInfo,
         #forms-container {
             padding: 25px;
             margin: 15px auto;
@@ -1036,18 +1036,25 @@
                             <!-- Firma inicial + Foto personal -->
                             <div class="col-12 mt-4">
                                 <div class="row mx-0 signature-photo-row">
+                                    <!-- Firma Personal -->
                                     <div class="col-lg-6 col-md-12 text-center signature-box mb-4">
                                         <label class="signature-label">Firma Personal *</label>
-                                        <div id="signature-container-initial" style="border: 1px solid #ccc; display: inline-block; margin: auto;">
-                                            <canvas id="signature-pad-initial" width="400" height="150"></canvas>
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <!-- Canvas de firma centrado -->
+                                            <div id="signature-container-initial" style="border: 1px dashed #cfd8e3; border-radius: 8px; background: #ffffff; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
+                                                <canvas id="signature-pad-initial" style="width: 400px; height: 150px;"></canvas>
+                                            </div>
+                                            <p id="alerta-firma-inicial" style="color:red; display:block" class="mt-2">La firma es obligatoria</p>
+                                            <input type="hidden" id="firma_personal" name="firma_personal" value="">
+                                            <!-- Botones debajo del canvas -->
+                                            <div class="btn-group mt-3" role="group">
+                                                <button type="button" id="clear-button-initial" class="btn btn-outline-primary btn-lg" title="Limpiar Firma">
+                                                    <i class="fas fa-eraser"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <p id="alerta-firma-inicial" style="color:red; display:block" class="mt-2">La firma es obligatoria</p>
-                                        <button type="button" id="clear-button-initial" class="btn btn-outline-primary btn-lg mt-3">
-                                            <i class="bi bi-eraser"></i> Limpiar Firma
-                                        </button>
-                                        <input type="hidden" id="firma_personal" name="firma_personal" value="">
                                     </div>
-
+                                    <!-- Foto Personal -->
                                     <div class="col-lg-6 col-md-12 text-center photo-box mb-4">
                                         <div class="rounded-3">
                                             <h6 class="mb-3"><b>Foto personal *</b></h6>
@@ -1058,14 +1065,12 @@
                                                         <video id="videoUsuario" autoplay class="w-100 rounded border" style="height: 180px; object-fit: cover;"></video>
                                                     </div>
                                                 </div>
-                                                
                                                 <!-- Placeholder a la derecha -->
                                                 <div id="fotoPlaceholder-foto_personal" class="foto-placeholder d-flex flex-column align-items-center justify-content-center" style="width: 48%; height: 180px; border: 2px dashed #cfd8e3; border-radius: 8px; background: #f8f9fa; overflow: hidden; position: relative;">
                                                     <i class="bi bi-image text-muted" style="font-size: 2rem; margin-bottom: 10px;"></i>
                                                     <img id="fotoPreview-foto_personal" src="" alt="Foto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 6px; object-fit: cover; display: none;" draggable="false">
                                                 </div>
                                             </div>
-                                            
                                             <div class="mt-3">
                                                 <button type="button" class="btn btn-primary capturar-foto-btn px-4 py-2" data-field-name="foto_personal">
                                                     <i class="fas fa-camera fa-lg text-white-50"></i>
@@ -1097,8 +1102,13 @@
     </footer>
 </div>
 
+<?php 
+    $loader = new LoadingAnimation();
+    echo $loader->render();
+?>
+
 <script>
     // Constante con la URL base para usar en JavaScript
     const BASE_URL = '<?php echo URL; ?>';
 </script>
-<script src="<?php echo URL; ?>Views/Sst/Scripts/gestion.js"></script>
+<script src="<?php echo assetVersion('Views/Sst/Scripts/gestion.js'); ?>"></script>
